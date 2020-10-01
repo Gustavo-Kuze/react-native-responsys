@@ -25,7 +25,11 @@ public class RNResponsysBridgeModule extends ReactContextBaseJavaModule {
                 }
                 pushIOManager = PushIOManager.getInstance(getReactApplicationContext());
 
-                Integer notificationIcon = getDrawableId("ic_responsys_alt");
+                Integer notificationIcon = getDrawableId("ic_responsys_alt", "drawable");
+                if (notificationIcon == 0) {
+                    notificationIcon = getDrawableId("ic_launcher", "mipmap");
+                }
+
                 pushIOManager.setDefaultSmallIcon(notificationIcon);
             }
         }
@@ -51,9 +55,9 @@ public class RNResponsysBridgeModule extends ReactContextBaseJavaModule {
             || Build.PRODUCT.contains("simulator");
     }
 
-    private  int getDrawableId(String name) {
+    private  int getDrawableId(String name, String type) {
         String packageName = getReactApplicationContext().getPackageName();
-        return getReactApplicationContext().getResources().getIdentifier(name, "drawable", packageName);
+        return getReactApplicationContext().getResources().getIdentifier(name, type, packageName);
     }
 
     @Override
