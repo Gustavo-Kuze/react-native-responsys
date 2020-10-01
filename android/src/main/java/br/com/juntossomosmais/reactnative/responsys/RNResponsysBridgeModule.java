@@ -31,6 +31,7 @@ public class RNResponsysBridgeModule extends ReactContextBaseJavaModule {
                 }
 
                 pushIOManager.setDefaultSmallIcon(notificationIcon);
+                pushIOManager.setDefaultLargeIcon(notificationIcon);
             }
         }
         return pushIOManager;
