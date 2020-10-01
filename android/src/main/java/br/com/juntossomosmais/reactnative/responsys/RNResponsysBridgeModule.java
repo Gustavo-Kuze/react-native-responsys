@@ -27,7 +27,7 @@ public class RNResponsysBridgeModule extends ReactContextBaseJavaModule {
 
                 Integer notificationIcon = getDrawableId("ic_responsys_alt", "drawable");
                 if (notificationIcon == 0) {
-                    notificationIcon = getDrawableId("ic_main", "mipmap");
+                    notificationIcon = getDrawableId("ic_launcher", "mipmap");
                 }
 
                 pushIOManager.setDefaultSmallIcon(notificationIcon);
