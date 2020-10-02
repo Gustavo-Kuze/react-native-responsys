@@ -4,10 +4,15 @@
 #else
 #import <React/RCTBridgeModule.h>
 #endif
+#import <UIKit/UIKit.h>
 
 @interface RNResponsysBridge : NSObject <RCTBridgeModule>
 
-+ (void)startWithAPIKey:(NSString *)key andAccountToken:(NSString*)token;
+typedef void (^RNCRemoteNotificationCallback)(UIBackgroundFetchResult result);
+
++ (void)didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings;
++ (void)didRegisterForRemoteNotificationsWithDeviceToken:(NSData *)deviceToken;
++ (void)didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(RNCRemoteNotificationCallback)completionHandler;
++ (void)didFailToRegisterForRemoteNotificationsWithError:(NSError *)error;
 
 @end
-  
