@@ -24,14 +24,8 @@ public class RNResponsysBridgeModule extends ReactContextBaseJavaModule {
                     PushIOManager.setLogLevel(Log.VERBOSE);
                 }
                 pushIOManager = PushIOManager.getInstance(getReactApplicationContext());
-
-                Integer notificationIcon = getDrawableId("ic_responsys_alt", "drawable");
-                if (notificationIcon == 0) {
-                    notificationIcon = getDrawableId("ic_launcher", "mipmap");
-                }
-
-                pushIOManager.setDefaultSmallIcon(notificationIcon);
-                pushIOManager.setDefaultLargeIcon(notificationIcon);
+                pushIOManager.setDefaultSmallIcon(getDrawableId("ic_notification", "drawable"));
+                pushIOManager.setDefaultLargeIcon(getDrawableId("ic_launcher", "mipmap"));
             }
         }
         return pushIOManager;
