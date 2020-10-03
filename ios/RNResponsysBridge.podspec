@@ -8,17 +8,13 @@ Pod::Spec.new do |s|
                    DESC
   s.homepage     = "https://github.com/juntossomosmais/react-native-responsys"
   s.license      = "MIT"
-  # s.license      = { :type => "MIT", :file => "FILE_LICENSE" }
-  s.author             = { "author" => "author@domain.cn" }
-  s.platform     = :ios, "7.0"
-  s.source       = { :git => "https://github.com/author/RNResponsysBridge.git", :tag => "master" }
-  s.source_files  = "RNResponsysBridge/**/*.{h,m}"
+  s.author       = { "author" => "author@domain.cn" }
+  s.platform     = :ios, "9.0"
+  s.source       = { :git => "https://github.com/juntossomosmais/react-native-responsys.git" }
+  s.source_files = "*.{h,m}"
   s.requires_arc = true
 
-
+  s.vendored_frameworks = "PushIOManager.framework"
   s.dependency "React"
-  #s.dependency "others"
 
 end
-
-  

@@ -9,6 +9,8 @@
     return dispatch_get_main_queue();
 }
 
+RCT_EXPORT_MODULE()
+
 + (void)didRegisterUserNotificationSettings:(UIUserNotificationSettings *)notificationSettings
 {
   [[PushIOManager sharedInstance] didRegisterUserNotificationSettings:notificationSettings];
@@ -29,8 +31,6 @@
   [[PushIOManager sharedInstance] didFailToRegisterForRemoteNotificationsWithError:error];
 }
 
-RCT_EXPORT_MODULE()
-
 RCT_EXPORT_METHOD(registerUserId:(NSString *)userId) {
     [[PushIOManager sharedInstance] registerUserID:userId];
 }
@@ -43,7 +43,7 @@ RCT_EXPORT_METHOD(setDeviceToken:(NSString *)deviceToken) {
     [[PushIOManager sharedInstance] didRegisterForRemoteNotificationsWithDeviceToken:[deviceToken dataUsingEncoding:NSUTF8StringEncoding]];
 }
 
-RCT_EXPORT_METHOD(registerApp:(bool *)useLocation) {
+RCT_EXPORT_METHOD(registerApp:(BOOL *)useLocation) {
     [[PushIOManager sharedInstance] configureWithFileName:@"pushio_config.json" completionHandler:^(NSError *error, NSString *response) {
         if(error != nil) {
             NSLog(@"PushIO - Unable to configure SDK, reason: %@", error.description);
