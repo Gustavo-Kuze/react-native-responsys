@@ -1,6 +1,8 @@
-# React Native
+# Responsys React Native
 
 An honest react native project to bridge Oracle Responsys SDK.
+
+**DISCLAIMER:** **This** package is a fork of [react-native-responsys](https://github.com/juntossomosmais/react-native-responsys), which doesn't have an ios version implemented. All the rights regarding the Android parts of this package's code, as well as the react native bridge base goes to "justossomosmais".
 
 ## How to setup your project
 
@@ -12,13 +14,24 @@ React Native does automatic linking from 0.60 version onwards, but if you're usi
 
     react-native link responsys-react-native
 
+
+## Manual Installation
+If your are using a React Native version older than 0.60, then follow the steps:
+
 ### iOS
 
-TODO.
+1. Make sure you have the following pod installed in your `PodFile`:
+
+```
+pod 'RNResponsysBridge', :path => '../node_modules/responsys-react-native/ios'
+```
+
+2. Run `pod install` inside the `ios` project subfolder
+
+_____
 
 ### Android
 
-If your are using a React Native version older than 0.60, then follow the steps:
 
 1. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
    ```

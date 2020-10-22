@@ -1,6 +1,6 @@
 {
   "name": "responsys-react-native",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "An honest react native project to bridge Oracle Responsys SDK.",
   "main": "index.js",
   "directories": {
