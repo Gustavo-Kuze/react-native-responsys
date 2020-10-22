@@ -1,6 +1,6 @@
 {
-  "name": "@juntossomosmais/react-native-responsys",
-  "version": "0.0.7",
+  "name": "responsys-react-native",
+  "version": "1.0.1",
   "description": "An honest react native project to bridge Oracle Responsys SDK.",
   "main": "index.js",
   "directories": {
@@ -11,9 +11,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/juntossomosmais/react-native-responsys.git"
+    "url": "https://github.com/Gustavo-Kuze/react-native-responsys"
   },
-  "author": "willianantunes",
+  "author": "Gustavo-Kuze",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/juntossomosmais/react-native-responsys/issues"
@@ -30,8 +30,9 @@
   },
   "keywords": [
     "crm",
-    "push-notication",
+    "push-notification",
     "responsys",
+    "oracle",
     "sdk"
   ]
 }

@@ -6,11 +6,11 @@ An honest react native project to bridge Oracle Responsys SDK.
 
 First install this native module:
 
-    npm install @juntossomosmais/react-native-responsys
+    npm install responsys-react-native
 
 React Native does automatic linking from 0.60 version onwards, but if you're using an older version, then do the following:
 
-    react-native link @juntossomosmais/react-native-responsys
+    react-native link responsys-react-native
 
 ### iOS
 
@@ -18,7 +18,7 @@ TODO.
 
 ### Android
 
-If your are using a version older than 0.60, then follow the steps:
+If your are using a React Native version older than 0.60, then follow the steps:
 
 1. Insert the following lines inside the dependencies block in `android/app/build.gradle`:
    ```
@@ -37,6 +37,12 @@ Add the following in your `AndroidManifest.xml`:
     .....
     <!-- Do not forget to follow Oracle Responsys documentation regarding permissions -->
     .....
+    <!-- Permission for your app to handle push notifications -->
+    <permission
+        android:name="${applicationId}.permission.PUSHIO_MESSAGE"
+        android:protectionLevel="signature" />
+    <uses-permission android:name="${applicationId}.permission.PUSHIO_MESSAGE"/>
+
     <application ....>
         <!-- Do not forget to follow Oracle Responsys documentation -->
         <service
@@ -46,6 +52,25 @@ Add the following in your `AndroidManifest.xml`:
                 <action android:name="com.google.firebase.MESSAGING_EVENT" />
             </intent-filter>
         </service>
+
+        <!-- Add this inside the activity that will open when the user clicks the push notification -->
+         <intent-filter>
+            <action android:name="${applicationId}.NOTIFICATIONPRESSED"/>
+            <category android:name="android.intent.category.DEFAULT"/>
+        </intent-filter>
+
+      <!-- Add this receiver right before application closing -->
+      <receiver
+          android:name="com.pushio.manager.PushIOBroadcastReceiver"
+          android:permission="com.google.android.c2dm.permission.SEND">
+          <intent-filter>
+              <action  android:name="com.google.android.c2dm.intent.RECEIVE" />
+              <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+              <category android:name="${applicationId}" />
+          </intent-filter>
+      </receiver>
+    </application>
+
      .....
 ```
 
@@ -67,7 +92,7 @@ In case you have multiple push SDKs (sample with Firebase Messaging):
 
 ```javascript
 import firebase from 'react-native-firebase'
-import ResponsysBridge from '@juntossomosmais/react-native-responsys'
+import ResponsysBridge from 'responsys-react-native'
 
 const messaging = firebase.messaging()
 
@@ -86,7 +111,7 @@ messaging
 Or simply:
 
 ```javascript
-import ResponsysBridge from '@juntossomosmais/react-native-responsys'
+import ResponsysBridge from 'responsys-react-native'
 
 const useLocation = false
 ResponsysBridge.registerApp(useLocation)
